@@ -15,8 +15,7 @@
     <p>Recent messages:</p>
   </div><br>
   <% @messages.reverse.each do |message| %>
-  <a href= '/selected_message'><%= message.content[0..20] %> </a>
-    <p><%= message.id %> </p>
+  <a href="/selected-message/<%= message.id %>"><%= message.content[0..20] %> </a> <%= message.time %>
   <% end %>
 </div>
 </html>
