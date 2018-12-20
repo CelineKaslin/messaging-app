@@ -7,4 +7,5 @@ gem 'sinatra'
 gem 'capybara'
 gem 'rspec'
 ruby '2.5.1'
-# gem "rails"
+gem 'dm-postgres-adapter'
+gem 'data_mapper'

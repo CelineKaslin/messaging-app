@@ -1,3 +1,7 @@
+  ENV["RACK_ENV"] ||= "development"
+
+require "rubygems"
+require 'data_mapper'
 require 'sinatra/base'
 require './lib/message'
 
