@@ -7,7 +7,7 @@ feature "homepage" do
   scenario "Only the 20 first characters of the message are displayed" do
     post_message
     expect(page).to have_content("Hello, how are you to")
-    expect(page).not_to have_content("oday ? Do you want to grab a drink tonight ?")
+    expect(page).not_to have_content("day ? Do you want to grab a drink tonight ?")
   end
 
   scenario 'takes you back on the homepage' do
