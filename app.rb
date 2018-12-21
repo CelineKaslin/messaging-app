@@ -1,41 +1,25 @@
-  ENV["RACK_ENV"] ||= "development"
+ENV["RACK_ENV"] ||= "development"
 
 require "rubygems"
 require 'data_mapper'
 require 'sinatra/base'
 require './lib/message'
+require './config/datamapper'
 
 class Messaging < Sinatra::Base
 
-  enable :sessions
-
-  before do
-    session[:messages] ||=[]
-    session[:id] ||=1
-  end
-
   get ('/') do
-    @messages = session[:messages]
+    @messages = Message.all
     erb(:index)
   end
 
   post ('/messages') do
-    id = session[:id]
-    message = Message.new(params[:content], id)
-    id += 1
-    session[:id] = id
-    session[:messages] << message
+    @message = Message.create(content: params[:content], time: Time.now)
     redirect('/')
   end
 
   get ('/selected-message/:id') do
-    id = params[:id].to_i
-    messages = session[:messages]
-    messages.each do |message|
-      if message.id == id
-        @message = message.content
-      end
-    end
+    @message = Message.get(params[:id])
     erb(:selected_message)
   end
 
