@@ -5,6 +5,9 @@
 </div>
 <div>
 <%= @message.content %>
+<form action="/edit_message/<%=@message.id%>" method= "get">
+  <p> <input type="submit" name="Edit" value="Edit">
+</form>
 <p> <a href='/'>Homepage</a> </p>
 </div>
 </html>

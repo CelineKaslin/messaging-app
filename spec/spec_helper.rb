@@ -12,7 +12,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'capybara/rspec'
 require 'rspec'
-require 'web_helpers'
+require './views/web_helpers'
 
 
 Capybara.app = Messaging

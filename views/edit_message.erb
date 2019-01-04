@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<div>
+  <h2>Edit your message :</h2>
+</div>
+
+<div>
+<form action="/edit/<%=@message.id%>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+    <textarea name="content" rows="5" cols="80"><%= @message.content %>
+    </textarea> <br>
+    <input type="submit" name="Submit" value="Submit">
+</form>
+</div>
+
+</html>

@@ -1,4 +1,6 @@
-class Message
+require 'data_mapper'
+
+class Message #< Rack::MethodOverride
 
   include DataMapper::Resource
 
@@ -6,11 +8,4 @@ class Message
   property :content, Text
   property :time, DateTime
 
-  # attr_reader :content, :time, :id
-  #
-  # def initialize(content, id = 0)
-  #   @content = content
-  #   @time = Time.now
-  #   @id = id
-  # end
 end

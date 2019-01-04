@@ -29,4 +29,15 @@ feature "homepage" do
     expect(page).to have_current_path('/selected-message/3')
   end
 
+  scenario 'Edit a message' do
+    visit('/')
+    fill_in :content, with: 'I have no idea about what to write for this test'
+    click_button 'Submit'
+    click_link 'I have no idea about'
+    click_button 'Edit'
+    fill_in :content, with: 'I still have no more idea about what to write'
+    click_button 'Submit'
+    expect(page).to have_content('I still have no more idea about what to write')
+  end
+
 end
