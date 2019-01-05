@@ -1,7 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'rubygems'
-#require 'data_mapper'
 require 'sinatra/base'
 require './lib/message'
 require './config/datamapper'
@@ -33,6 +32,11 @@ class Messaging < Sinatra::Base
    @message = Message.get(params[:id])
    @message.update(content: params[:content])
    redirect ("/selected-message/#{params[:id]}")
+ end
+
+ delete '/delete/:id' do
+   @message = Message.get(params[:id]).destroy
+   redirect('/')
  end
 
 end

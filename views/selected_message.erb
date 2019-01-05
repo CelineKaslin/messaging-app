@@ -6,8 +6,17 @@
 <div>
 <%= @message.content %>
 <form action="/edit_message/<%=@message.id%>" method= "get">
-  <p> <input type="submit" name="Edit" value="Edit">
+  <p> <input type="submit" name="Edit" value="Edit"> </p>
 </form>
-<p> <a href='/'>Homepage</a> </p>
+
+<form action="/delete/<%=@message.id%>" method= "post">
+   <input type="hidden" name="_method" value="DELETE">
+  <p> <input type="submit" name="Delete" value="Delete"> </p>
+</form>
+
+<form action="/" method= "get">
+  <p> <input type="submit" value="Homepage"> </p>
+</form>
+
 </div>
 </html>

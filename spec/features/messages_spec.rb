@@ -15,7 +15,7 @@ feature "homepage" do
     fill_in :content, with: "Hi, this is my second test"
     click_button 'Submit'
     click_link 'Hi, this is my second'
-    click_link 'Homepage'
+    click_button 'Homepage'
     expect(page).to have_current_path('/')
   end
 
@@ -24,7 +24,7 @@ feature "homepage" do
     fill_in :content, with: "Hi, this is my third test"
     click_button 'Submit'
     click_link 'Hi, this is my second'
-    click_link 'Homepage'
+    click_button 'Homepage'
     click_link 'Hi, this is my third'
     expect(page).to have_current_path('/selected-message/3')
   end
@@ -38,6 +38,15 @@ feature "homepage" do
     fill_in :content, with: 'I still have no more idea about what to write'
     click_button 'Submit'
     expect(page).to have_content('I still have no more idea about what to write')
+  end
+
+  scenario 'Delete a message' do
+    visit('/')
+    fill_in :content, with: 'It is the test I will use to delete my message'
+    click_button 'Submit'
+    click_link 'It is the test I will'
+    click_button 'Delete'
+    expect(page).not_to have_content('It is the test I will')
   end
 
 end

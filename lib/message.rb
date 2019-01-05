@@ -1,6 +1,6 @@
 require 'data_mapper'
 
-class Message #< Rack::MethodOverride
+class Message
 
   include DataMapper::Resource
 
