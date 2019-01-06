@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<div>
-  <h1>Welcome to Messaging World:</h1>
-</div>
-
 <div>
   <form action="/messages" method="post">
       <label>Enter message:</label> <br>
@@ -18,4 +12,3 @@
   <p> <a href="/selected-message/<%= message.id %>"><%= message.content[0..20] %> </a> <%= message.time %></p>
   <% end %>
 </div>
-</html>

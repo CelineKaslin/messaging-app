@@ -10,7 +10,7 @@ class Messaging < Sinatra::Base
 
   get '/' do
     @messages = Message.all
-    erb(:index)
+    erb(:index, :layout => :layout)
   end
 
   post '/messages' do
@@ -20,12 +20,12 @@ class Messaging < Sinatra::Base
 
   get '/selected-message/:id' do
     @message = Message.get(params[:id])
-    erb(:selected_message)
+    erb(:selected_message, :layout => :layout)
   end
 
  get '/edit_message/:id' do
    @message = Message.get(params[:id])
-   erb(:edit_message)
+   erb(:edit_message, :layout => :layout)
  end
 
  put '/edit/:id' do
