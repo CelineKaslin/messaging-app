@@ -4,7 +4,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,])
 SimpleCov.start
 
-#set :environment, 'test'
+ENV['RACK_ENV'] = 'test'
 
 require_relative '../app.rb'
 

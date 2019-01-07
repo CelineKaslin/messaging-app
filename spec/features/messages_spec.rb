@@ -23,8 +23,6 @@ feature "homepage" do
     visit('/')
     fill_in :content, with: "Hi, this is my third test"
     click_button 'Submit'
-    click_link 'Hi, this is my second'
-    click_button 'Homepage'
     click_link 'Hi, this is my third'
     expect(page).to have_current_path('/selected-message/3')
   end
