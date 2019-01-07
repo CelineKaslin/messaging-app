@@ -4,7 +4,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,])
 SimpleCov.start
 
-ENV['RACK_ENV'] = 'test'
+#set :environment, 'test'
 
 require_relative '../app.rb'
 
@@ -13,6 +13,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara/rspec'
 require 'rspec'
 require './views/web_helpers'
+require'database_cleaner'
 
 
 Capybara.app = Messaging
@@ -33,6 +34,16 @@ Capybara.app = Messaging
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:suite) do
+   DatabaseCleaner.strategy = :transaction
+   DatabaseCleaner.clean_with(:truncation)
+ end
+
+ config.around(:each) do |example|
+   DatabaseCleaner.cleaning do
+     example.run
+   end
+ end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

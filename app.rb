@@ -1,4 +1,4 @@
-ENV['RACK_ENV'] ||= 'development'
+#ENV['RACK_ENV'] ||= 'development'
 
 require 'rubygems'
 require 'sinatra/base'
@@ -7,6 +7,8 @@ require './config/datamapper'
 
 class Messaging < Sinatra::Base
   enable :method_override
+  #set :environment, 'development'
+
 
   get '/' do
     @messages = Message.all
